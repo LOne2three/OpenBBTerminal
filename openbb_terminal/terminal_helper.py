@@ -137,7 +137,16 @@ def open_openbb_documentation(
 ):
     """Opens the documentation page based on your current location within the terminal. Make exceptions for menus
     that are considered 'common' by adjusting the path accordingly."""
-    if path == "/" and command is None:
+    if path == "/" and command in [
+            "intro",
+            "about",
+            "support",
+            "survey",
+            "update",
+            "wiki",
+            "news",
+            "account",
+    ]:
         path = "/usage?path=/usage/basics"
         command = ""
     elif "keys" in path:
@@ -194,18 +203,6 @@ def open_openbb_documentation(
             command = ""
         elif command == "sources":
             path = "/usage?path=/usage/guides/changing-sources"
-            command = ""
-        elif command in [
-            "intro",
-            "about",
-            "support",
-            "survey",
-            "update",
-            "wiki",
-            "news",
-            "account",
-        ]:
-            path = "/guides"
             command = ""
         elif command in ["ta", "ba", "qa"]:
             path = f"/usage?path=/usage/intros/common/{command}"
